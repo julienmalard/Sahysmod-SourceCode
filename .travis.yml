@@ -1,0 +1,23 @@
+language: generic
+sudo: required
+dist: trusty
+
+os:
+  - linux
+  - osx
+
+install:
+  - git clone https://github.com/nielsAD/travis-lazarus
+  - cd travis-lazarus
+  - .travis.install.py
+  - cd ..
+
+
+script:
+  - lazbuild $LAZ_OPT src/SahysMod
+
+
+notifications:
+  email:
+    on_success: never
+    on_failure: change
