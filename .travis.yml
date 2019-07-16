@@ -9,7 +9,7 @@ os:
 install:
   - git clone https://github.com/nielsAD/travis-lazarus
   - cd travis-lazarus
-  - .travis.install.py
+  - python .travis.install.py
   - cd ..
 
 
