@@ -23,7 +23,7 @@ before_install:
       fi
 
 install:
-  - fpc src/SahysMod.dpr
+  - fpc src/console/SahysModConsole.dpr
 
 script:
   - ./hello
