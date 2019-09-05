@@ -6,7 +6,7 @@ uses
   SysUtils,
 //  Forms,
 //  Windows,
-  TLHelp32,
+//  TLHelp32,
   UMain in 'UMain.pas',
   UDataMod in 'UDataMod.pas',
   UExtraUtils in 'UExtraUtils.pas',
