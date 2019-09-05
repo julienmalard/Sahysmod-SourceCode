@@ -4,8 +4,8 @@ program SahysModConsole;
 
 uses
   SysUtils,
-  Forms,
-  Windows,
+//  Forms,
+//  Windows,
   TLHelp32,
   UMain in 'UMain.pas',
   UDataMod in 'UDataMod.pas',
