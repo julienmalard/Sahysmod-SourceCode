@@ -1,12 +1,13 @@
+{$mode Delphi}
 program SahysModConsole;
 
 {$APPTYPE CONSOLE}
 
 uses
   SysUtils,
-//  Forms,
+  Forms,
   Windows,
-//  TLHelp32,
+  TLHelp32,
   UMain in 'UMain.pas',
   UDataMod in 'UDataMod.pas',
   UExtraUtils in 'UExtraUtils.pas',
