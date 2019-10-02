@@ -11,7 +11,7 @@ before_install:
     - if [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
-        brew install fpcsrc lazarus > /dev/null;
+        brew cask install fpcsrc lazarus > /dev/null;
       elif [[ $TRAVIS_OS_NAME == linux ]]; then
         sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
         sudo apt-get update;
