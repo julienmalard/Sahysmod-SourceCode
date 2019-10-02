@@ -16,6 +16,7 @@ before_install:
         sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
         sudo apt-get update;
         sudo apt -q install fpc;
+        sudo apt-get lazarus lcl-nogui;
       else
         wget -q ftp://ftp.freepascal.org/pub/fpc/snapshot/v33/i386-win32/fpc-3.3.1.i386-win32.zip;
         mkdir fpc;
