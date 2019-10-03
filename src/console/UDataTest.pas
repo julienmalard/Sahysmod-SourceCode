@@ -1,3 +1,4 @@
+{$mode Delphi}
 unit UDataTest;
 
 //Note that here data are read from [1] to [NrOfPoly] whereas in UDataMod

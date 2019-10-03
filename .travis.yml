@@ -8,15 +8,15 @@ os:
   - windows
 
 before_install:
-    - if [[ $TRAVIS_OS_NAME == osx ]]; then
+    - if [[ $TRAVIS_OS_NAME == linux ]]; then
+        sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
+        sudo apt-get update;
+        sudo apt -q install fpc caskroom/cask/brew-cask;
+        sudo apt -q install lazarus lcl-nogui;
+      elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
         brew cask install fpcsrc lazarus > /dev/null;
-      elif [[ $TRAVIS_OS_NAME == linux ]]; then
-        sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
-        sudo apt-get update;
-        sudo apt -q install fpc;
-        sudo apt-get install lazarus lcl-nogui;
       else
         wget -q ftp://ftp.freepascal.org/pub/fpc/snapshot/v33/i386-win32/fpc-3.3.1.i386-win32.zip;
         mkdir fpc;
@@ -25,7 +25,9 @@ before_install:
       fi
 
 install:
-  - lazbuild src/console/SahysModConsole.dpr
+  - cd src/console
+  - lazbuild SahysModConsole.lpr --widgetset=cocoa
+  - SahysModConsole example.inp example.out
 
 script:
   - ./hello

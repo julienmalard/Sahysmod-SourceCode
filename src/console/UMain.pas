@@ -1,9 +1,10 @@
+{$mode Delphi}
 unit UMain;
 
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls;
+  SysUtils, Variants, Classes, Controls;
 
 procedure InputOpen_Execute(AInitDir, AOutDir: string);
 procedure PresentData;

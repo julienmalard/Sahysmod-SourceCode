@@ -1,3 +1,4 @@
+{$mode Delphi}
 unit UInputData;
 
 interface

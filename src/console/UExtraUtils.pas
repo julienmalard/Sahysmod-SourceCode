@@ -1,3 +1,4 @@
+{$mode Delphi}
 unit UExtraUtils;
 
 interface
@@ -92,7 +93,6 @@ begin
     SumOfMonths := SumOfMonths + DataMod.SeasonDuration[ii];
   if SumOfMonths<>12 then
   begin
-    Showmessage ('The sum of season durations must be 12 months');
     exit;
   end;
   DurationError:=false;
@@ -100,22 +100,16 @@ begin
       if DataMod.SeasonDuration[ii]<1 then DurationError:=true;
   if DurationError then
   begin
-    Showmessage ('The season durations must be at least 1 month');
     exit;
   end;
   if DataMod.TotNrOfPoly+DataMod.NrOfNodesAdded
                         -DataMod.NrOfNodesRemoved>300 then
   begin
-    Showmessage ('The total number of polygons plus the number added minus'+
-                 ' the number removed cannot be greater than 300. A larger'+
-                 ' version can be made available.');
     exit;
   end;
   if DataMod.TotNrOfPoly+DataMod.NrOfNodesAdded
                         -DataMod.NrOfNodesRemoved<4 then
   begin
-    Showmessage ('The total number of polygons plus the number added minus'+
-                 ' the number removed cannot be less than 4');
     exit;
   end;
   DataOk:=true;
@@ -143,7 +137,6 @@ begin
     end;
     if NodeError then
     begin
-       Showmessage ('The node numbers must be positive');
        exit;
     end;
     NodeError:=false;
@@ -153,7 +146,6 @@ begin
         if (Int_Ext_Index[k]<>1) and (Int_Ext_Index[k]<>2) then NodeError:=true;
       if NodeError then
       begin
-        Showmessage ('The internal/external index must be 1 or 2');
         exit;
       end;
     end else
@@ -163,7 +155,6 @@ begin
            and (Int_Ext_Index[k]<>-1) then NodeError:=true;
       if NodeError then
       begin
-        Showmessage ('The internal/external index must be 1 or 2');
         exit;
       end else
       begin
@@ -172,9 +163,6 @@ begin
             NrToBeRemoved:=NrToBeRemoved+1;
         if NrToBeRemoved<>NrOfNodesRemoved then
         begin
-          Showmessage ('The number of nodes with removal index -1 does not'+
-                       ' correspond to the number of nodes to be removed'+
-                       ' as indicated under the general data.  Please adjust.');
           exit;
         end;
       end;
@@ -227,7 +215,6 @@ begin
       end;
       if NegValuePresent then
       begin
-        Showmessage('Negative data are present. Please correct.');
         exit;
       end;
     end;
@@ -250,16 +237,12 @@ begin
         if HlpValue[j,k]<0.1 then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The roozone depth Dr and the transition zone thickness'+
-                   ' Dt must all be greater than 0.1 m.');
       exit;
     end;
     for k:=0 to NrOfIntPoly-1 do
         if (AquiferType[k]<>0) and (AquiferType[k]<>1) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The index for auifer characteristics can only be'+
-                   '  0  or  1');
       exit;
     end;
   end;
@@ -282,7 +265,6 @@ begin
         if (HlpValue[j,k]<0.1) or (HlpValue[j,k]>0.9) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The total porosity should be between 0.1 and 0.9');
       exit;
     end;
   end;
@@ -311,12 +293,8 @@ begin
     end;
     if PolyError then
     begin
-      Showmessage ('The effective porosity should be between 0.01 and 0.5');
       exit;
     end;
-    if AqError then
-      Showmessage ('Warning: the storativity of the semi-confined aquifer'+
-                   ' seems too large.');
   end;
   CheckOK:=true;
 end; {CheckEffPorData}
@@ -337,7 +315,6 @@ begin
         if (HlpValue[j,k]<0.01) or (HlpValue[j,k]>2) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The leaching efficiency should be between 0.01 and 2');
       exit;
     end;
   end;
@@ -360,14 +337,12 @@ begin
         if (HlpValue[1,k]<>0) and (HlpValue[1,k]<>1) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The drainage index Kd must be 0 or 1');
       exit;
     end;
     for k:=0 to NrOfIntPoly-1 do
         if (HlpValue[2,k]<>0) and (HlpValue[2,k]<>1) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The farmers responses index Kr must be 0 or 1');
       exit;
     end;
     for k:=0 to NrOfIntPoly-1 do
@@ -376,8 +351,6 @@ begin
         if (HlpValue[4,k]<>0) and (HlpValue[4,k]<>1) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('The farmers responses index (Krf) to the rotation'+
-                   ' type must be 0 or 1');
       exit;
     end;
   end;
@@ -431,8 +404,6 @@ begin
            if (HlpValue[1,k]<0) then PolyError:=true;
     if PolyError then
     begin
-      Showmessage ('You have changed input data. Please adjust all negative'+
-                   ' values');
       exit;
     end;
   end; {with DataMod do}
@@ -474,7 +445,6 @@ begin
         if Neighbor[j,k]<0 then ErrInNetw:=true;
     if ErrInNetw then
     begin
-       Showmessage ('The neighbor node numbers must be positive');
        exit;
     end;
     ErrInNetw:=false;
@@ -482,7 +452,6 @@ begin
         if NrOfSides[k]<3 then ErrInNetw:=true;
     if ErrInNetw then
     begin
-       Showmessage ('The number of sides must be at least 3');
        exit;
     end;
 
@@ -521,12 +490,6 @@ begin
 
     if ErrInNetw then
     begin
-      Showmessage ('The occurrences of a node number as a neighbor do'+
-                   ' not correspond to the number of sides of that node,'+
-                   '  or a neighbor node number is not existing in the'+
-                   ' in the Overall data group,  or there are duplicate'+
-                   ' neighbors of one polygon. The errors concern node:  '+
-                   ErrorLine);
       exit;
     end;
 
@@ -569,9 +532,6 @@ begin
         if (DXX<0) and (DYY>0) then Ang:=arctan(-DXX/DYY)+1.5*Pi;
         if (DXX=0) and (DYY=0) then
         begin
-          Showmessage('Node '+IntToStr(NodeNr[k])+' and its neigbor '+
-                       IntToStr(Neighbor[j,k])+' have the same coordinates.'+
-                      '  Please adjust');
           exit;
         end;
         Angle[j]:=Ang;
@@ -693,8 +653,6 @@ begin
           if NextNodeNr[j,k]>0 then
              ErrorLine:=ErrorLine+' ('+IntToStr(NodeNr[k])+','+
                         IntToStr(NextNodeNr[j,k])+')  ';
-      Showmessage ('There is a coordinate problem related to the following'+
-                   ' (Node,Neighbor) combination: '+Errorline);
       exit;
     end;
 
@@ -849,7 +807,6 @@ begin
     begin
       if (i=1) or (i=2) then if DataMod.AuxValue[i,j,k]>1 then
       begin
-        Showmessage ('Area fractions must be between 0 and 1');
         exit;
       end;
     end;
@@ -867,15 +824,12 @@ begin
   end;
   if RiceError then
   begin
-    if InitCheckOK then Showmessage ('Rice crop indices can only be 0 or 1');
     exit;
     end;
   for j:=1 to DataMod.NrOfSeasons do for k:=0 to DataMod.NrOfIntPoly-1 do
   begin
     if DataMod.AuxValue[1,j,k]+DataMod.AuxValue[2,j,k]>1.001 then
     begin
-      Showmessage ('The sum of area fraction A under type A crops plus'+
-                 ' area fraction B under type B crops cannot be more than 1');
       exit;
     end;
   end;
@@ -973,12 +927,6 @@ begin
   end; {with DataMod do}
   if PolyError then
   begin
-    if GroupFile='Areas' then
-      Showmessage ('You have made input changes. Please adjust all negative'+
-                   ' data, including the rice cropping index.')
-    else
-      Showmessage ('You have made input changes. Please adjust all negative'+
-                   ' data.');
     exit;
   end;
   if not PolyError then CheckOK:=true;
@@ -999,7 +947,6 @@ begin
            if (DrainIndex[k]>0) and (AuxValue[1,j,k]<0) then SeasonError:=true;
   if SeasonError then
   begin
-    Showmessage ('The re-use of drainage water cannot be negative');
     exit;
   end;
   SeasonError:=false;
@@ -1010,8 +957,6 @@ begin
               SeasonError:=true;
   if SeasonError then
   begin
-    Showmessage ('The re-use fraction of well water must be between'+
-                 ' 0 and 1');
     exit;
   end;
   CheckOK:=true;
@@ -1053,8 +998,6 @@ begin
     if DoBottomTest[ii+NrOfIntPoly] and (BottomLevel[ii]>=HlpValue[jj+1,ii])
     then
     begin
-      Showmessage ('In each season the initial external water level must'+
-                   ' be higher than the bottom level of the aquifer.');
       exit;
     end;
   end;

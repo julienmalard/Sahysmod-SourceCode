@@ -1,9 +1,10 @@
+{$MODE DELPHI}
 unit UDataMod;
 
 interface
 
 uses
-  SysUtils, Classes, Dialogs, Forms, Controls;
+  SysUtils, Classes, Dialogs, Controls;
 
 type
   DataSetR  = array of real;
@@ -118,7 +119,6 @@ type
 
          {General}
     function StringToFlo(Str : string) : double;
-    function Question(const Query: string): boolean;
   end;
 
 var
@@ -145,7 +145,6 @@ begin
   {$I-} Reset(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A reading error occurred');
     exit;
   end;
   readln (GroupFile,Title1);
@@ -182,7 +181,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A file could not be opened. Data cannot be shown');
     exit;
   end;
   writeln (GroupFile,Title1);
@@ -195,7 +193,6 @@ begin
   if (AccuracyLevel<1) or (AccuracyLevel>3) then Error:=true;
   if Error then
   begin
-    Showmessage ('There is an input error. Please check.');
     CheckOK:=false;
     exit;
   end;
@@ -228,7 +225,6 @@ begin
   {$I-} Reset(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A reading error occurred. Data cannot be shown');
     exit;
   end;
   setlength(NodeNr,TotNrOfPoly+NrOfNodesAdded);
@@ -271,7 +267,6 @@ begin
   {$I-} Reset(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A reading error occurred. Data cannot be shown');
     exit;
   end;
   setlength(NodeNr,TotNrOfPoly+NrOfNodesAdded);
@@ -314,7 +309,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A file could not be opened. Data cannot be shown');
     exit;
   end;
   NrOfPoly:=TotNrOfPoly;
@@ -375,7 +369,6 @@ begin
   {$I-} Reset(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be opened, SahysMod cannot proceed');
     exit;
   end;
   if NrOfNodesAdded>0 then
@@ -432,7 +425,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be opened, SahysMod cannot proceed');
     exit;
   end;
   if SelfMade or (NrOfNodesAdded>0) then
@@ -654,8 +646,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -669,8 +659,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to NrOfIntPoly-1 do
@@ -691,8 +679,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -706,8 +692,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -721,8 +705,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -736,8 +718,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -751,8 +731,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -766,8 +744,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -781,8 +757,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -796,8 +770,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -811,8 +783,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -826,8 +796,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}                {and seasonal water level}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to NrOfExtPoly-1 do write (GroupFile,' -1 ');
@@ -843,8 +811,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -858,8 +824,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -873,8 +837,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}                   {drainage control}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -888,8 +850,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}                 {and rice cropping indices}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -903,8 +863,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -918,8 +876,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -933,8 +889,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 3 do for j:=1 to NrOfSeasons do
@@ -959,8 +913,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -985,8 +937,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1002,8 +952,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -1019,8 +967,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1038,8 +984,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -1068,8 +1012,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1085,8 +1027,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1102,8 +1042,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -1119,8 +1057,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1136,8 +1072,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1153,8 +1087,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to InitNrOfExtPoly-1 do write (GroupFile,HlpValue[1,k]:7:2);
@@ -1173,8 +1105,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1190,8 +1120,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1207,8 +1135,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1224,8 +1150,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1257,8 +1181,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1274,8 +1196,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1291,8 +1211,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 3 do for j:=1 to NrOfSeasons do
@@ -1322,8 +1240,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1344,8 +1260,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to InitNrOfIntPoly-1 do if Int_Ext_Index[k]=1 then
@@ -1368,8 +1282,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1385,8 +1297,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -1402,8 +1312,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1419,8 +1327,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1445,8 +1351,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1462,8 +1366,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1479,8 +1381,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 4 do
@@ -1496,8 +1396,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1513,8 +1411,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for j:=1 to 3 do
@@ -1530,8 +1426,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to InitNrOfExtPoly-1 do
@@ -1552,8 +1446,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1569,8 +1461,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1586,8 +1476,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1603,8 +1491,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1645,8 +1531,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do for j:=1 to NrOfSeasons do
@@ -1662,8 +1546,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do for j:=1 to NrOfSeasons do
@@ -1679,8 +1561,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 3 do for j:=1 to NrOfSeasons do
@@ -1715,8 +1595,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for k:=0 to NrOfExtPoly-1 do write (GroupFile,HlpValue[1,k]:7:2);
@@ -1738,8 +1616,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do
@@ -1762,8 +1638,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do
@@ -1786,8 +1660,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do
@@ -1810,8 +1682,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do
@@ -1857,8 +1727,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 4 do
@@ -1881,8 +1749,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 2 do
@@ -1905,8 +1771,6 @@ begin
   {$I-} Rewrite(GroupFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('A temporary file could not be created,'+
-                ' SahysMod cannot proceed');
     exit;
   end;
   for i:=1 to 3 do
@@ -1926,9 +1790,6 @@ begin
 
   InitNrOfSeasons:=NrOfSeasons;
   NrOfSeasonsAdded:=0;
-  Showmessage ('The number of seasons was increased. Please adjust all'+
-               ' seasonal data on the Seasonal Input tabsheet starting'+
-               ' with the irrigated area fractions.');
 
 end; {TDataMod.AddToSeasonGroups}
 {-------------------------------}
@@ -2087,9 +1948,6 @@ begin
     for j:=1 to NrOfSeasons do for k:=0 to NrOfIntPoly-1 do
         if (AuxValue[1,j,k]>0) and (Pumpage[j,k]<>AuxValue[1,j,k]) then
             PumpChange:=true;
-    if PumpChange then
-       Showmessage ('The pumping from wells was changed.'+
-                    '  Please check the re-use data.');
   end; {if GroupName='Name17' then}
 
   if (GroupName='Name18') or                    {area fractions, rice cropping}
@@ -2223,8 +2081,6 @@ begin
   TmpName:=ChangeFileExt(OutputFileName,'.inp');
   if not fileexists (TmpName) then
   begin
-    Showmessage ('The input file ' + TmpName + ' could not be found.' +
-                 ' Output data cannot be retrieved.');
     exit;
   end;
   assignfile (InFile,TmpName);
@@ -2288,8 +2144,6 @@ begin
   {$I-} Reset(OutFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('The file "'+OutputFileName+'"could not be opened. It may be ' +
-      'damaged or in use by another program.');
     exit;
   end;
   NrOfData:=(NrOfYears+1)*NrOfSeasons;
@@ -2455,8 +2309,6 @@ begin
   {$I-} Reset(OutFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('The file "'+OutputFileName+'"could not be opened. It may be ' +
-      'damaged or in use by another program.');
     exit;
   end;
   for k:=1 to 9 do readln (OutFile);
@@ -2712,8 +2564,6 @@ begin
 3:{$I-} Reset(OutFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('The file "'+OutputFileName+'"could not be opened. It may be ' +
-      'damaged or in use by another program.');
     exit;
   end;
   for k:=1 to 9 do readln (OutFile);
@@ -2848,8 +2698,6 @@ begin
   {$I-} Reset(OutFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('The file "' + DocName + '"could not be opened. It may be ' +
-      'damaged or in use by another program.');
     Reading:=false;
     exit;
   end;
@@ -2881,8 +2729,6 @@ begin
   {$I-} Reset(OutFile); {$I+}
   if ioresult <> 0 then
   begin
-    Showmessage('The file "' + DocName + '"could not be opened. It may be ' +
-      'damaged or in use by another program.');
     Reading:=false;
     exit;
   end;
@@ -2944,8 +2790,6 @@ begin
   if (TypeStr<>' YEA') and (TypeStr<>'POLY') then
   begin
     NoGraph:=true;
-    showmessage ('This *.prn file is meant only for spreadsheet use.'+
-                 ' Graph cannot be shown.');
     closefile (GroupFile);
     exit;
   end;
@@ -3093,14 +2937,6 @@ begin
   end;
 end; {TSegRegForm.StringToFlo}
 {----------------------------}
-
-
-
-function TDataMod.Question(const Query: string): boolean;
-{-------------------------------------------------------}
-begin
-  Result := MessageDlg(Query, mtConfirmation, [mbYes, mbNo], 0) = mrYes;
-end;
 
 
 procedure TDataMod.DataModuleCreate(Sender: TObject);
