@@ -192,7 +192,6 @@ begin
      end else
      begin
        Write ('Input file could not be saved due to missing temporary files');
-       Readln;
        exit;
      end;
      if YearNr<1 then OriginalName:=SaveFileName;

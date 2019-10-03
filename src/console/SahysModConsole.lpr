@@ -16,19 +16,23 @@ uses
 var
   InitDir, OutDir: string;
   InitDirStr, OutDirStr: string;
-  step: boolean;
 
 begin
   Application.CreateForm(TDataMod, DataMod);
-  step:= true;
-  while step do
-  begin
-    InitDirStr:= ParamStr(1);
-    OutDirStr:=  ParamStr(2);
 
-    InitDir:= InitDirStr;
-    OutDir:= OutDirStr;
+  InitDirStr:= ParamStr(1);
+  OutDirStr:=  ParamStr(2);
+
+  InitDir:= InitDirStr;
+  OutDir:= OutDirStr;
+
+  if FileExists (InitDir) then
+    InputOpened:=true
+  else
+    begin
+      Writeln ('Input file does not exist.');
+      Write(InitDir);
+      exit;
+    end;
     InputOpen_Execute(InitDir, OutDir);
-
-  end;
 end.

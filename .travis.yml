@@ -27,7 +27,7 @@ before_install:
 install:
   - cd src/console
   - lazbuild SahysModConsole.lpr --widgetset=cocoa
-  - SahysModConsole example.inp example.out
+  - ./SahysModConsole test/example.inp test/example.out
 
 script:
   - ./hello
