@@ -29,7 +29,7 @@ install:
   - if [[ $TRAVIS_OS_NAME == osx ]]; then
       lazbuild SahysModConsole.lpr --widgetset=cocoa;
     else
-      lazbuild SahysModConsole.lpr;
+      /usr/lib/lazarus/lazbuild SahysModConsole.lpr;
     fi
   - ./SahysModConsole "$PWD/test/example.inp" "$PWD/test/example.out"
 
