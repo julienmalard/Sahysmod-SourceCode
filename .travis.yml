@@ -13,7 +13,6 @@ before_install:
         sudo apt-get update;
         sudo apt -q install fpc caskroom/cask/brew-cask;
         sudo apt -q install lazarus lcl-nogui;
-        find / -name lazbuild
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
@@ -27,8 +26,12 @@ before_install:
 
 install:
   - cd src/console
-  - lazbuild SahysModConsole.lpr --widgetset=cocoa
-  - ./SahysModConsole test/example.inp test/example.out
+  - if [[ $TRAVIS_OS_NAME == osx ]]; then
+      lazbuild SahysModConsole.lpr --widgetset=cocoa;
+    else
+      lazbuild SahysModConsole.lpr;
+    fi
+  - ./SahysModConsole "$PWD/test/example.inp" "$PWD/test/example.out"
 
 script:
   - ./hello
