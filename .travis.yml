@@ -22,16 +22,22 @@ before_install:
         mkdir fpc;
         unzip -q -d fpc fpc-3.3.1.i386-win32.zip;
         export PATH="$PATH":"$PWD/fpc/bin/i386-win32/";
+        wget -q ftp://ftp.freepascal.org/pub/fpc/source/lazarus.zip;
+        mkdir lazarus
+        unzip -q -d fpc lazarus.zip;
+        export PATH="$PATH":"$PWD/lazarus";
+        make;
       fi
 
 install:
   - cd src/console
-  - if [[ $TRAVIS_OS_NAME == osx ]]; then
+  - if [[ $TRAVIS_OS_NAME == linux ]]; then
+      /usr/lib/lazarus/lazbuild SahysModConsole.lpr;
+    elif [[ $TRAVIS_OS_NAME == osx ]]; then
       lazbuild SahysModConsole.lpr --widgetset=cocoa;
     else
-      /usr/lib/lazarus/lazbuild SahysModConsole.lpr;
+      lazbuild
     fi
-  - ./SahysModConsole "$PWD/test/example.inp" "$PWD/test/example.out"
 
 script:
-  - ./hello
+  - ./SahysModConsole "$PWD/test/example.inp" "$PWD/test/example.out"
