@@ -94,6 +94,7 @@ begin
          PresentData;
     end
   end; {with DataMod do}
+  writeln(DataMod.Conduct[4, 214]);  // Programme breaks without this odd line. No idea why
   CalcDone:=false;
   InputOpened := true;
   DataMod.YearNr:=0;
