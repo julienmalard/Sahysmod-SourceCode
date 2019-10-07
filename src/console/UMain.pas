@@ -178,7 +178,7 @@ begin
 //Move the "Name" files (GroupFiles) from the old DataDir to the new DataDir
      if PreviousDir<>NewDataDir then
         MoveGroupFiles (PreviousDir, NewDataDir);
-     if AnsiUpperCase(PreviousDir)<>AnsiUpperCase(NewDataDir) then
+     if PreviousDir<>NewDataDir then
      begin
        chdir (PreviousDir);
        DeleteGroupFiles;                           {GroupFiles are "Name"files}
@@ -203,7 +203,7 @@ begin
      ChDir(InitDir);
      DoCalculations;
      begin
-       chdir(AnsiUpperCase(PreviousDir));
+               chdir(PreviousDir);
        DeleteGroupFiles;
      end;
   end; {with DataMod do}
