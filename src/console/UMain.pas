@@ -203,6 +203,7 @@ begin
      ChDir(InitDir);
      DoCalculations;
      begin
+       writeln(PreviousDir);
                chdir(PreviousDir);
        DeleteGroupFiles;
      end;
