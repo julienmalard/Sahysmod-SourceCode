@@ -10,9 +10,6 @@ os:
 before_install:
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
         sudo apt-get install lazarus lcl-nogui;
-        "export DISPLAY=:99.0";
-        "sh -e /etc/init.d/xvfb start";
-        sleep 3;
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
@@ -28,6 +25,9 @@ before_install:
         export PATH="$PATH":"$PWD/lazarus";
         make;
       fi
+    - "export DISPLAY=:99.0";
+    - "sh -e /etc/init.d/xvfb start";
+    - sleep 3;
 
 install:
   - cd src/console
