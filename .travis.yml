@@ -32,7 +32,7 @@ before_install:
 install:
   - cd src/console
   - if [[ $TRAVIS_OS_NAME == linux ]]; then
-      ./lazbuild SahysModConsole.lpr;
+      lazbuild SahysModConsole.lpr;
     elif [[ $TRAVIS_OS_NAME == osx ]]; then
       lazbuild SahysModConsole.lpr --widgetset=cocoa;
     else
