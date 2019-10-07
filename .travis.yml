@@ -9,7 +9,7 @@ os:
 
 before_install:
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
-        sudo apt-get install lazarus lclbase;
+        sudo apt-get install lazarus lcl-base   ;
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
