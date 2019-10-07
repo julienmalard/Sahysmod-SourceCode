@@ -9,10 +9,10 @@ os:
 
 before_install:
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
-        sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
-        sudo apt-get update;
-        sudo apt -q install fpc caskroom/cask/brew-cask;
-        sudo apt -q install lazarus lcl-nogui;
+        # sudo add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe";
+        # sudo apt-get update;
+        # sudo apt -q install fpc caskroom/cask/brew-cask;
+        sudo apt-get install lazarus lcl-nogui;
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update > /dev/null;
         brew install fpc > /dev/null;
