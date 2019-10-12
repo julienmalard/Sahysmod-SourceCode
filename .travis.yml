@@ -41,8 +41,9 @@ install:
 
 script:
   - ./SahysModConsole "$PWD/test/example.inp" "$PWD/test/example.out"
+  - [ -f "$PWD/test/example.out" ] && echo "Output generated and all is well" || exit 1
   - mkdir dist
-  - mv ./SahysModConsole ./dist/SahysModConsole
+  - mv ./SahysModConsole "./dist/SahysModConsole-$TRAVIS_OS_NAME-$TRAVIS_TAG"
 
 deploy:
   provider: releases
