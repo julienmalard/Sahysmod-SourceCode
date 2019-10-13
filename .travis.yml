@@ -44,7 +44,8 @@ script:
   - if [[ -f "$PWD/test/example.out" ]]; then
       echo "Output generated and all is well";
     else
-      exit 1
+      exit 1;
+    fi
   - mkdir dist
   - mv ./SahysModConsole "./dist/SahysModConsole-$TRAVIS_OS_NAME-$TRAVIS_TAG"
 
