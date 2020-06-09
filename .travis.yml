@@ -19,7 +19,7 @@ before_install:
         brew cask install fpcsrc lazarus > /dev/null;
       else
         choco install make;
-        git clone git://github.com/graemeg/lazarus.git@upstream;
+        git clone git://github.com/graemeg/lazarus.git;
         cd lazarus;
         make;
         cd ..;
