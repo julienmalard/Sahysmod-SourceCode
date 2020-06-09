@@ -18,7 +18,8 @@ before_install:
         brew install fpc > /dev/null;
         brew cask install fpcsrc lazarus > /dev/null;
       else
-        git clone git://github.com/graemeg/lazarus.git;
+        choco install make;
+        git clone git://github.com/graemeg/lazarus.git@upstream;
         cd lazarus;
         make;
         cd ..;
@@ -26,7 +27,6 @@ before_install:
         mkdir fpc;
         unzip -q -d fpc fpc-3.3.1.i386-win32.zip;
         export PATH="$PATH":"$PWD/fpc/bin/i386-win32/";
-
       fi
 
 install:
@@ -36,7 +36,7 @@ install:
     elif [[ $TRAVIS_OS_NAME == osx ]]; then
       lazbuild SahysModConsole.lpr --widgetset=cocoa;
     else
-      ./lazarus/lazbuild SahysModConsole.lpr;
+      lazbuild SahysModConsole.lpr;
     fi
 
 script:
