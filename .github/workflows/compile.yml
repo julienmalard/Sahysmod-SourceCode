@@ -1,4 +1,4 @@
-name: Compile SWAT+
+name: Compile Sahysmod
 on:
   push:
     branches:
