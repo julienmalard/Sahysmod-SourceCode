@@ -24,8 +24,8 @@ jobs:
           with-cache: true
 
       - name: Build
-          run: lazbuild SahysModConsole.lpr
-          if: runner.os != 'macOS'
+        run: lazbuild SahysModConsole.lpr
+        if: runner.os != 'macOS'
 
       - name: Build macOS
         run: lazbuild SahysModConsole.lpr --widgetset=cocoa
