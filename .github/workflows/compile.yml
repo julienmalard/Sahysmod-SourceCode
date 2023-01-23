@@ -33,7 +33,7 @@ jobs:
 
       - name: Test
         run: |
-          ./src/console/SahysModConsole "test/example.inp" "test/example.out"
+          ./src/console/SahysModConsole "${GITHUB_WORKSPACE}/test/example.inp" "${GITHUB_WORKSPACE}/test/example.out"
           if [[ -f "test/example.out" ]]; then
             echo "Output generated and all is well";
           else
