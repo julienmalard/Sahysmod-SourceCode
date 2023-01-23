@@ -24,7 +24,7 @@ jobs:
           with-cache: true
 
       - name: Build
-        run: lazbuild SahysModConsole.lpr
+        run: lazbuild cd src/console/SahysModConsole.lpr
         if: runner.os != 'macOS'
 
       - name: Build macOS
