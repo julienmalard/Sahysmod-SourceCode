@@ -2,7 +2,7 @@ name: Compile Sahysmod
 on:
   push:
     branches:
-      - githubActions
+      - master
 jobs:
   compile:
     runs-on: ${{ matrix.os }}
