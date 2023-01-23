@@ -31,7 +31,15 @@ jobs:
         run: lazbuild SahysModConsole.lpr --widgetset=cocoa
         if: runner.os == 'macOS'
 
-
+      - name: Test
+        run: |
+          ./SahysModConsole "test/example.inp" "test/example.out"
+          if [[ -f "test/example.out" ]]; then
+            echo "Output generated and all is well";
+          else
+            exit 1;
+          fi
+        shell: bash
 
       - name: Prepare release
         run: mkdir dist && mv ./SahysModConsole "./dist/SahysModConsole-$RUNNER_OS-$TRAVIS_TAG"
