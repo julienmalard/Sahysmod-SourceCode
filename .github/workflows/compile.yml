@@ -28,7 +28,7 @@ jobs:
         if: runner.os != 'macOS'
 
       - name: Build macOS
-        run: lazbuild SahysModConsole.lpr --widgetset=cocoa
+        run: lazbuild src/console/SahysModConsole.lpr --widgetset=cocoa
         if: runner.os == 'macOS'
 
       - name: Test
