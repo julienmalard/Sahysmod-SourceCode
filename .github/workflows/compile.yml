@@ -41,8 +41,12 @@ jobs:
           fi
         shell: bash
 
+      - name: List dir
+        run: dir ./src/console
+        if: runner.os == 'Windows'
+
       - name: Prepare release
-        run: mkdir dist && mv ./src/console/SahysModConsole "./dist/SahysModConsole-$RUNNER_OS-$TRAVIS_TAG"
+        run: mkdir dist && mv ./src/console/SahysModConsole.exe "./dist/SahysModConsole.exe"
 
       - name: Release
         uses: ncipollo/release-action@v1
