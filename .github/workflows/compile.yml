@@ -46,8 +46,9 @@ jobs:
             exit 1;
           fi
         shell: bash
+        if: runner.os != 'ubuntu'
 
-      - name: Test MacOS
+      - name: Test Ubuntu
         run: |
           xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- ./src/console/SahysModConsole "${GITHUB_WORKSPACE}/test/example.inp" "${GITHUB_WORKSPACE}/test/example.out"
           if [[ -f "test/example.out" ]]; then
@@ -56,6 +57,7 @@ jobs:
             exit 1;
           fi
         shell: bash
+        if: runner.os == 'ubuntu'
 
       - name: Prepare release on Windows
         run: mkdir dist && mv ./src/console/SahysModConsole.exe "./dist/SahysModConsole.exe"
