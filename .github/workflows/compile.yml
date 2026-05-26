@@ -27,7 +27,7 @@ jobs:
         with:
           lazarus-version: "stable"
           include-packages: "Synapse 40.1"
-          with-cache: true
+          with-cache: false
 
       - name: Build
         run: lazbuild src/console/SahysModConsole.lpr
