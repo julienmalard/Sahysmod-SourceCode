@@ -27,7 +27,7 @@ jobs:
         with:
           lazarus-version: "stable"
           include-packages: "Synapse 40.1"
-          with-cache: true
+          with-cache: false
 
       - name: Build
         run: lazbuild src/console/SahysModConsole.lpr
@@ -40,6 +40,16 @@ jobs:
       - name: Test
         run: |
           ./src/console/SahysModConsole "${GITHUB_WORKSPACE}/test/example.inp" "${GITHUB_WORKSPACE}/test/example.out"
+          if [[ -f "test/example.out" ]]; then
+            echo "Output generated and all is well";
+          else
+            exit 1;
+          fi
+        shell: bash
+
+      - name: Test MacOS
+        run: |
+          xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- ./src/console/SahysModConsole "${GITHUB_WORKSPACE}/test/example.inp" "${GITHUB_WORKSPACE}/test/example.out"
           if [[ -f "test/example.out" ]]; then
             echo "Output generated and all is well";
           else
