@@ -14,10 +14,10 @@ jobs:
 
     steps:
       - name: Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v6
 
       - name: Install Pascal
-        uses: gcarreno/setup-lazarus@v3.2
+        uses: gcarreno/setup-lazarus@v4
         with:
           lazarus-version: "stable"
           include-packages: "Synapse 40.1"
