@@ -20,11 +20,12 @@ jobs:
         run: | 
           OPT="-XR/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/"
           echo "OPT=$OPT" >> $GITHUB_ENV 
+        if: runner.os == 'macOS'
 
       - name: Install Pascal
         uses: gcarreno/setup-lazarus@v3
         with:
-          lazarus-version: "latest"
+          lazarus-version: "stable"
           include-packages: "Synapse 40.1"
           with-cache: true
 
