@@ -19,7 +19,7 @@ jobs:
       - name: Install Pascal
         uses: gcarreno/setup-lazarus@v3
         with:
-          lazarus-version: "3.8"
+          lazarus-version: "latest"
           include-packages: "Synapse 40.1"
           with-cache: true
 
