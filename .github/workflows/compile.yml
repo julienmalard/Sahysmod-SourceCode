@@ -19,7 +19,7 @@ jobs:
       - name: Install Pascal
         uses: gcarreno/setup-lazarus@v3
         with:
-          lazarus-version: "stable"
+          lazarus-version: "3.8"
           include-packages: "Synapse 40.1"
           with-cache: true
 
@@ -41,12 +41,13 @@ jobs:
           fi
         shell: bash
 
-      - name: List dir
-        run: dir ./src/console
+      - name: Prepare release on Windows
+        run: mkdir dist && mv ./src/console/SahysModConsole.exe "./dist/SahysModConsole.exe"
         if: runner.os == 'Windows'
 
-      - name: Prepare release
-        run: mkdir dist && mv ./src/console/SahysModConsole.exe "./dist/SahysModConsole.exe"
+      - name: Prepare release on all other platforms
+        run: mkdir dist && mv ./src/console/SahysModConsole "./dist/SahysModConsole"
+        if: runner.os != 'Windows'
 
       - name: Release
         uses: ncipollo/release-action@v1
