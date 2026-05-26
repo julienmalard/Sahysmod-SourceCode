@@ -13,6 +13,6 @@ for Linux, MacOS and Windows, using Travis-CI to compile.
 See releases for the downloadable files.
 
 ## Contact 
-Julien Malard (julien.malard@mail.mcgill.ca)
+Julien Malard-Adam (julien.malard@mail.mcgill.ca)
 
 Compiler settings inspired by https://github.com/daar/travis-fpc
