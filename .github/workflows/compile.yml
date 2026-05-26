@@ -16,6 +16,11 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v6
 
+      - name: MacOS env
+        run: | 
+          OPT="-XR/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/"
+          echo "OPT=$OPT" >> $GITHUB_ENV 
+
       - name: Install Pascal
         uses: gcarreno/setup-lazarus@v3
         with:
